@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv/config')
+const app = express()
 
 // file constants
 const apiBaseUrl=process.env.API_BASE_PREFIX
@@ -39,7 +40,6 @@ mongoose.connect(process.env.MONGO_CONNECTION).then(()=>{
 
 
 // server
-const app = express()
 app.listen(3000,()=>{
     console.log("the server is running at http://localhost:3000")
 })

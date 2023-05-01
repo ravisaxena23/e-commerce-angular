@@ -20,6 +20,8 @@ app.use(errorHandler);
 app.get('/',(req,res)=>{
     res.send('app running successfully')
 })
+app.use("/public/upload", express.static(__dirname + "/public/upload"));
+
 
 // routes
 const categoriesRoutes = require('./routes/categories');

@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv/config')
 const app = express()
-
+const authJwt = require('./helpers/jwt')
+const errorHandler = require('./helpers/error-handler');
+ 
 // file constants
 const apiBaseUrl=process.env.API_BASE_PREFIX
 
@@ -13,7 +15,8 @@ app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
 app.options('*',cors())
-
+app.use(authJwt)
+app.use(errorHandler);
 app.get('/',(req,res)=>{
     res.send('app running successfully')
 })

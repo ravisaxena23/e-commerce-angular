@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
 app.options('*',cors())
-app.use(authJwt)
+app.use(authJwt())
 app.use(errorHandler);
 app.get('/',(req,res)=>{
     res.send('app running successfully')
@@ -37,7 +37,10 @@ app.use(`${apiBaseUrl}/orders`, ordersRoutes);
 
 
 // database connection
-mongoose.connect(process.env.MONGO_CONNECTION).then(()=>{
+mongoose.connect(process.env.MONGO_CONNECTION,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(()=>{
     console.log("Database connected")
 }).catch((err)=>{
     console.log(err)

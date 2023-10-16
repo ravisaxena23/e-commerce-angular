@@ -20,5 +20,10 @@ header {
     .pi {
       margin-right: 10px;
     }
+    .pi-cart {
+      &:hover {
+        color: #ff3a00;
+      }
+    }
   }
 }
